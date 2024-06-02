@@ -1,3 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:education_app/src/authentication/data/datasources/auth_remote_data_source.dart';
+import 'package:education_app/src/authentication/data/datasources/auth_remote_data_source_impl.dart';
+import 'package:education_app/src/authentication/data/repositories/auth_repository_impl.dart';
+import 'package:education_app/src/authentication/domain/repositories/auth_repository.dart';
+import 'package:education_app/src/authentication/domain/usecases/forgot_password_use_case.dart';
+import 'package:education_app/src/authentication/domain/usecases/sign_in_use_case.dart';
+import 'package:education_app/src/authentication/domain/usecases/sign_up_use_case.dart';
+import 'package:education_app/src/authentication/domain/usecases/update_user_use_case.dart';
+import 'package:education_app/src/authentication/presentation/bloc/auth_bloc.dart';
 import 'package:education_app/src/on_boarding/data/datasources/on_boarding_local_data_source.dart';
 import 'package:education_app/src/on_boarding/data/datasources/on_boarding_local_data_source_impl.dart';
 import 'package:education_app/src/on_boarding/data/repositories/on_boarding_repository_impl.dart';
@@ -5,19 +15,9 @@ import 'package:education_app/src/on_boarding/domain/repositories/on_boarding_re
 import 'package:education_app/src/on_boarding/domain/usecases/cache_first_timer_use_case.dart';
 import 'package:education_app/src/on_boarding/domain/usecases/check_if_user_is_first_timer_use_case.dart';
 import 'package:education_app/src/on_boarding/presentation/cubit/on_boarding_cubit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final sl = GetIt.instance;
-
-Future<void> initial() async {
-  final prefs = await SharedPreferences.getInstance();
-
-  sl
-    ..registerFactory(() => OnBoardingCubit(sl(), sl()))
-    ..registerLazySingleton(() => CacheFirstTimerUseCase(sl()))
-    ..registerLazySingleton(() => CheckIfUserIsFirstTimerUseCase(sl()))
-    ..registerLazySingleton<OnBoardingRepository>(() => OnBoardingRepositoryImpl(sl()))
-    ..registerLazySingleton<OnBoardingLocalDataSource>(() => OnBoardingLocalDataSourceImpl(sl()))
-    ..registerLazySingleton(() => prefs);
-}
+part 'injection_container.main.dart';
