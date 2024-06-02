@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "181797020161",
+    "project_id": "education-app-5e1c1",
+    "storage_bucket": "education-app-5e1c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181797020161:android:8862ea250721ffebfe5600",
+        "android_client_info": {
+          "package_name": "com.zenx.education.education_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHJApxJgqvlrcRl7kom_VBfkFvSkiL75g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
