@@ -1,6 +1,6 @@
 import 'package:education_app/core/utils/typedefs.dart';
-import 'package:education_app/src/authentication/domain/entities/user_entity.dart';
 import 'package:education_app/src/authentication/domain/entities/update_user_enum.dart';
+import 'package:education_app/src/authentication/domain/entities/user_entity.dart';
 
 abstract class AuthRepository {
   const AuthRepository();
@@ -20,6 +20,6 @@ abstract class AuthRepository {
 
   ResultFuture<void> updateUser({
     required UpdateUserAction action,
-    dynamic userData,
+    required dynamic userData,
   });
 }

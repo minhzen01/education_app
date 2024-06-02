@@ -6,10 +6,10 @@ class UserEntity extends Equatable {
     required this.email,
     required this.points,
     required this.fullName,
-    required this.groupId,
-    required this.enrolledCourseIds,
-    required this.following,
-    required this.follower,
+    this.groupIds = const [],
+    this.enrolledCourseIds = const [],
+    this.following = const [],
+    this.followers = const [],
     this.profilePic,
     this.bio,
   });
@@ -22,10 +22,6 @@ class UserEntity extends Equatable {
       fullName: '',
       profilePic: '',
       bio: '',
-      groupId: [],
-      enrolledCourseIds: [],
-      following: [],
-      follower: [],
     );
   }
 
@@ -35,10 +31,10 @@ class UserEntity extends Equatable {
   final String? bio;
   final int points;
   final String fullName;
-  final List<String> groupId;
+  final List<String> groupIds;
   final List<String> enrolledCourseIds;
   final List<String> following;
-  final List<String> follower;
+  final List<String> followers;
 
   @override
   String toString() {
