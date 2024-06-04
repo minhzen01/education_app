@@ -37,7 +37,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           listener: (context, state) {
             if (state is OnBoardingStatusState && !state.isFirstTimer) {
               Navigator.pushReplacementNamed(context, '/home');
-            } else if (state is UserCachedState) {}
+            } else if (state is UserCachedState) {
+              Navigator.pushReplacementNamed(context, '/');
+            }
           },
           builder: (context, state) {
             if (state is CheckingIfUserIsFirstTimerState || state is CachingFirstTimerState) {
