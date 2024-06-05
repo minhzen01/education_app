@@ -8,7 +8,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         (context) {
           if (prefs.getBool(OnBoardingConstants.kFirstTimerKey) ?? true) {
             return BlocProvider(
-              create: (_) => sl<OnBoardingCubit>()..checkIfUserIsFirstTimer(),
+              create: (_) => sl<OnBoardingCubit>(),
               child: const OnboardingScreen(),
             );
           } else if (sl<FirebaseAuth>().currentUser != null) {
@@ -50,11 +50,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         (_) => const DashboardScreen(),
         settings: settings,
       );
-    // case '/forgot-password':
-    //   return _pageBuilder(
-    //         (_) => const fui.ForgotPasswordScreen(),
-    //     settings: settings,
-    //   );
+
+    case '/forgot-password':
+      return _pageBuilder(
+        (_) => const fui.ForgotPasswordScreen(),
+        settings: settings,
+      );
     default:
       return _pageBuilder(
         (_) => const PageUnderConstruction(),
@@ -69,14 +70,10 @@ PageRouteBuilder<dynamic> _pageBuilder(
 }) {
   return PageRouteBuilder(
     settings: settings,
-    transitionsBuilder: (_, animation, __, child) {
-      return FadeTransition(
-        opacity: animation,
-        child: child,
-      );
-    },
-    pageBuilder: (context, _, __) {
-      return page(context);
-    },
+    transitionsBuilder: (_, animation, __, child) => FadeTransition(
+      opacity: animation,
+      child: child,
+    ),
+    pageBuilder: (context, _, __) => page(context),
   );
 }
