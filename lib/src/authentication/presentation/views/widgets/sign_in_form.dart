@@ -1,5 +1,4 @@
 import 'package:education_app/core/common/widgets/app_text_field.dart';
-import 'package:education_app/src/authentication/presentation/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
@@ -47,18 +46,6 @@ class _SignInFormState extends State<SignInForm> {
               ),
             ),
           ),
-          const SizedBox(height: 20),
-          Align(
-            alignment: Alignment.centerRight,
-            child: TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/forgot-password');
-              },
-              child: const Text('Forgot password?'),
-            ),
-          ),
-          const SizedBox(height: 32),
-          // state is AuthLoadingState ? Center(child: CircularProgressIndicator(),)
         ],
       ),
     );
