@@ -19,7 +19,14 @@ Route<dynamic> generateRoute(RouteSettings settings) {
               points: 0,
               fullName: user.displayName ?? '',
             );
-            context.userProvider.initUser(localUser);
+            context.userProvider.initUser(
+              UserEntity(
+                uid: localUser.uid,
+                email: localUser.email,
+                points: localUser.points,
+                fullName: localUser.fullName,
+              ),
+            );
             return const DashboardScreen();
           }
           return BlocProvider(

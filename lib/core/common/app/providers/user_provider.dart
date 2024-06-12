@@ -1,16 +1,16 @@
-import 'package:education_app/src/authentication/data/models/user_model.dart';
+import 'package:education_app/src/authentication/domain/entities/user_entity.dart';
 import 'package:flutter/material.dart';
 
 class UserProvider extends ChangeNotifier {
-  UserEntityModel? _user;
+  UserEntity? _user;
 
-  UserEntityModel? get user => _user;
+  UserEntity? get user => _user;
 
-  void initUser(UserEntityModel? user) {
+  void initUser(UserEntity? user) {
     if (_user != user) _user = user;
   }
 
-  set user(UserEntityModel? user) {
+  set user(UserEntity? user) {
     if (_user != user) {
       _user = user;
       Future.delayed(Duration.zero, notifyListeners);

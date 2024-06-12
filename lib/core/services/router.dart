@@ -2,6 +2,7 @@ import 'package:education_app/core/common/views/page_under_construction.dart';
 import 'package:education_app/core/extensions/context_extension.dart';
 import 'package:education_app/core/services/injection_container.dart';
 import 'package:education_app/src/authentication/data/models/user_model.dart';
+import 'package:education_app/src/authentication/domain/entities/user_entity.dart';
 import 'package:education_app/src/authentication/presentation/bloc/auth_bloc.dart';
 import 'package:education_app/src/authentication/presentation/views/sign_in_screen.dart';
 import 'package:education_app/src/authentication/presentation/views/sign_up_screen.dart';

@@ -4,7 +4,6 @@ import 'package:education_app/core/common/widgets/rounded_button.dart';
 import 'package:education_app/core/res/fonts.dart';
 import 'package:education_app/core/res/media_res.dart';
 import 'package:education_app/core/utils/core_utils.dart';
-import 'package:education_app/src/authentication/data/models/user_model.dart';
 import 'package:education_app/src/authentication/presentation/bloc/auth_bloc.dart';
 import 'package:education_app/src/authentication/presentation/views/sign_up_screen.dart';
 import 'package:education_app/src/authentication/presentation/views/widgets/sign_in_form.dart';
@@ -43,7 +42,7 @@ class _SignInScreenState extends State<SignInScreen> {
           if (state is AuthErrorState) {
             CoreUtils.showSnackBar(context, state.message);
           } else if (state is SignedInState) {
-            context.read<UserProvider>().initUser(state.user as UserEntityModel);
+            context.read<UserProvider>().initUser(state.user);
             Navigator.pushReplacementNamed(context, DashboardScreen.routeName);
           }
         },

@@ -17,10 +17,6 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final SignInUseCase _signInUseCase;
-  final SignUpUseCase _signUpUseCase;
-  final ForgotPasswordUseCase _forgotPasswordUseCase;
-  final UpdateUserUseCase _updateUserUseCase;
 
   AuthBloc(
     this._signInUseCase,
@@ -34,6 +30,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<ForgotPasswordEvent>(_forgotPasswordEvent);
     on<UpdateUserEvent>(_updateUserEvent);
   }
+  final SignInUseCase _signInUseCase;
+  final SignUpUseCase _signUpUseCase;
+  final ForgotPasswordUseCase _forgotPasswordUseCase;
+  final UpdateUserUseCase _updateUserUseCase;
 
   FutureOr<void> _authEvent(AuthEvent event, Emitter<AuthState> emit) async {
     emit(const AuthLoadingState());
