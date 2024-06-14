@@ -16,6 +16,12 @@ class DashboardUtils {
             email: data.email,
             points: data.points,
             fullName: data.fullName,
+            groupIds: data.groupIds,
+            enrolledCourseIds: data.enrolledCourseIds,
+            following: data.enrolledCourseIds,
+            followers: data.followers,
+            profilePic: data.profilePic,
+            bio: data.bio,
           );
         },
       );
