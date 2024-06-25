@@ -5,6 +5,7 @@ final sl = GetIt.instance;
 Future<void> initial() async {
   await _initOnBoarding();
   await _initAuth();
+  await _initCourse();
 }
 
 Future<void> _initOnBoarding() async {
@@ -31,4 +32,13 @@ Future<void> _initAuth() async {
     ..registerLazySingleton(() => FirebaseAuth.instance)
     ..registerLazySingleton(() => FirebaseFirestore.instance)
     ..registerLazySingleton(() => FirebaseStorage.instance);
+}
+
+Future<void> _initCourse() async {
+  sl
+    ..registerFactory(() => CourseCubit(sl(), sl()))
+    ..registerLazySingleton(() => AddCourseUseCase(sl()))
+    ..registerLazySingleton(() => GetCoursesUseCase(sl()))
+    ..registerLazySingleton<CourseRepository>(() => CourseRepositoryImpl(sl()))
+    ..registerLazySingleton<CourseRemoteDataSource>(() => CourseRemoteDataSourceImpl(sl(), sl(), sl()));
 }

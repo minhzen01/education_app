@@ -8,6 +8,13 @@ import 'package:education_app/src/authentication/domain/usecases/sign_in_use_cas
 import 'package:education_app/src/authentication/domain/usecases/sign_up_use_case.dart';
 import 'package:education_app/src/authentication/domain/usecases/update_user_use_case.dart';
 import 'package:education_app/src/authentication/presentation/bloc/auth_bloc.dart';
+import 'package:education_app/src/course/data/datasources/course_remote_data_source.dart';
+import 'package:education_app/src/course/data/datasources/course_remote_data_source_impl.dart';
+import 'package:education_app/src/course/data/repositories/course_repository_impl.dart';
+import 'package:education_app/src/course/domain/repositories/course_repository.dart';
+import 'package:education_app/src/course/domain/usecases/add_course_use_case.dart';
+import 'package:education_app/src/course/domain/usecases/get_courses_use_case.dart';
+import 'package:education_app/src/course/presentation/cubit/course_cubit.dart';
 import 'package:education_app/src/on_boarding/data/datasources/on_boarding_local_data_source.dart';
 import 'package:education_app/src/on_boarding/data/datasources/on_boarding_local_data_source_impl.dart';
 import 'package:education_app/src/on_boarding/data/repositories/on_boarding_repository_impl.dart';
