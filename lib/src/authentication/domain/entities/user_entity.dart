@@ -41,6 +41,8 @@ class UserEntity extends Equatable {
     return 'AuthUserEntity{uid: $uid, email: $email, bio: $bio, points: $points, fullName: $fullName}';
   }
 
+  bool get isAdmin => email == 'minhzen@gmail.com';
+
   @override
   List<Object?> get props => [
         uid,

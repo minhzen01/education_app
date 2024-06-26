@@ -17,6 +17,19 @@ class CourseModel extends Course {
     super.image,
   });
 
+  CourseModel.empty()
+      : this(
+          id: '_empty.id',
+          title: '_empty.title',
+          description: '_empty.description',
+          numberOfExams: 0,
+          numberOfMaterials: 0,
+          numberOfVideos: 0,
+          groupId: '_empty.groupId',
+          createdAt: DateTime.now(),
+          updatedAt: DateTime.now(),
+        );
+
   factory CourseModel.fromMap(DataMap map) {
     return CourseModel(
       id: map['id'] as String,

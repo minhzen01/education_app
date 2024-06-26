@@ -26,7 +26,7 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer(
+    return BlocConsumer<CourseCubit, CourseState>(
       listener: (_, state) {
         if (state is CourseErrorState) {
           CoreUtils.showSnackBar(context, state.message);
@@ -45,7 +45,7 @@ class _HomeBodyState extends State<HomeBody> {
           final courses = state.courses..sort((a, b) => b.updatedAt.compareTo(a.updatedAt));
           return ListView(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            children: [
+            children: const [
 
             ],
           );
