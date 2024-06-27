@@ -40,7 +40,7 @@ class CourseModel extends Course {
       groupId: map['groupId'] as String,
       createdAt: (map['createdAt'] as Timestamp).toDate(),
       updatedAt: (map['updatedAt'] as Timestamp).toDate(),
-      description: map['image'] as String?,
+      description: map['description'] as String?,
       image: map['image'] as String?,
     );
   }
