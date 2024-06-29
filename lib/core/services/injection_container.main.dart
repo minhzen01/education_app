@@ -6,6 +6,7 @@ Future<void> initial() async {
   await _initOnBoarding();
   await _initAuth();
   await _initCourse();
+  await _initVideo();
 }
 
 Future<void> _initOnBoarding() async {
@@ -41,4 +42,13 @@ Future<void> _initCourse() async {
     ..registerLazySingleton(() => GetCoursesUseCase(sl()))
     ..registerLazySingleton<CourseRepository>(() => CourseRepositoryImpl(sl()))
     ..registerLazySingleton<CourseRemoteDataSource>(() => CourseRemoteDataSourceImpl(sl(), sl(), sl()));
+}
+
+Future<void> _initVideo() async {
+  sl
+    ..registerFactory(() => VideoCubit(sl(), sl()))
+    ..registerLazySingleton(() => AddVideoUseCase(sl()))
+    ..registerLazySingleton(() => GetVideosUseCase(sl()))
+    ..registerLazySingleton<VideoRepository>(() => VideoRepositoryImpl(sl()))
+    ..registerLazySingleton<VideoRemoteDataSource>(() => VideoRemoteDataSourceImpl(sl(), sl(), sl()));
 }

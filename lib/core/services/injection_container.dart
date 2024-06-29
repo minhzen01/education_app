@@ -14,6 +14,13 @@ import 'package:education_app/src/course/data/repositories/course_repository_imp
 import 'package:education_app/src/course/domain/repositories/course_repository.dart';
 import 'package:education_app/src/course/domain/usecases/add_course_use_case.dart';
 import 'package:education_app/src/course/domain/usecases/get_courses_use_case.dart';
+import 'package:education_app/src/course/features/videos/data/datasources/video_remote_data_source.dart';
+import 'package:education_app/src/course/features/videos/data/datasources/video_remote_data_source_impl.dart';
+import 'package:education_app/src/course/features/videos/data/repositories/video_repository_impl.dart';
+import 'package:education_app/src/course/features/videos/domain/repositories/video_repository.dart';
+import 'package:education_app/src/course/features/videos/domain/usecases/add_video_use_case.dart';
+import 'package:education_app/src/course/features/videos/domain/usecases/get_videos_use_case.dart';
+import 'package:education_app/src/course/features/videos/presentation/cubit/video_cubit.dart';
 import 'package:education_app/src/course/presentation/cubit/course_cubit.dart';
 import 'package:education_app/src/on_boarding/data/datasources/on_boarding_local_data_source.dart';
 import 'package:education_app/src/on_boarding/data/datasources/on_boarding_local_data_source_impl.dart';
