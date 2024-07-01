@@ -7,6 +7,7 @@ Future<void> initial() async {
   await _initAuth();
   await _initCourse();
   await _initVideo();
+  await _initMaterial();
 }
 
 Future<void> _initOnBoarding() async {
@@ -51,4 +52,13 @@ Future<void> _initVideo() async {
     ..registerLazySingleton(() => GetVideosUseCase(sl()))
     ..registerLazySingleton<VideoRepository>(() => VideoRepositoryImpl(sl()))
     ..registerLazySingleton<VideoRemoteDataSource>(() => VideoRemoteDataSourceImpl(sl(), sl(), sl()));
+}
+
+Future<void> _initMaterial() async {
+  sl
+    ..registerFactory(() => MaterialCubit(sl(), sl()))
+    ..registerLazySingleton(() => AddMaterialUseCase(sl()))
+    ..registerLazySingleton(() => GetMaterialsUseCase(sl()))
+    ..registerLazySingleton<MaterialRepository>(() => MaterialRepositoryImpl(sl()))
+    ..registerLazySingleton<MaterialRemoteDataSource>(() => MaterialRemoteDataSourceImpl(sl(), sl(), sl()));
 }

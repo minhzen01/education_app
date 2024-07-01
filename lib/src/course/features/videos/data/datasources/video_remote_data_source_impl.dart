@@ -10,7 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class VideoRemoteDataSourceImpl extends VideoRemoteDataSource {
-  VideoRemoteDataSourceImpl(
+  const VideoRemoteDataSourceImpl(
     this._auth,
     this._firestore,
     this._storage,

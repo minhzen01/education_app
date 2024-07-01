@@ -2,6 +2,8 @@ import 'package:education_app/src/course/features/videos/data/models/video_model
 import 'package:education_app/src/course/features/videos/domain/entities/video_entity.dart';
 
 abstract class VideoRemoteDataSource {
+  const VideoRemoteDataSource();
+
   Future<List<VideoModel>> getVideos(String courseId);
 
   Future<void> addVideo(VideoEntity videoEntity);
