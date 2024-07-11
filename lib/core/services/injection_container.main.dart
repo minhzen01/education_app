@@ -8,6 +8,7 @@ Future<void> initial() async {
   await _initCourse();
   await _initVideo();
   await _initMaterial();
+  await _initExam();
 }
 
 Future<void> _initOnBoarding() async {
@@ -61,4 +62,18 @@ Future<void> _initMaterial() async {
     ..registerLazySingleton(() => GetMaterialsUseCase(sl()))
     ..registerLazySingleton<MaterialRepository>(() => MaterialRepositoryImpl(sl()))
     ..registerLazySingleton<MaterialRemoteDataSource>(() => MaterialRemoteDataSourceImpl(sl(), sl(), sl()));
+}
+
+Future<void> _initExam() async {
+  sl
+    ..registerFactory(() => ExamCubit(sl(), sl(), sl(), sl(), sl(), sl(), sl()))
+    ..registerLazySingleton(() => GetExamQuestionsUseCase(sl()))
+    ..registerLazySingleton(() => GetExamsUseCase(sl()))
+    ..registerLazySingleton(() => SubmitExamUseCase(sl()))
+    ..registerLazySingleton(() => UpdateExamUseCase(sl()))
+    ..registerLazySingleton(() => UploadExamUseCase(sl()))
+    ..registerLazySingleton(() => GetUserCourseExamsUseCase(sl()))
+    ..registerLazySingleton(() => GetUserExamsUseCase(sl()))
+    ..registerLazySingleton<ExamRepository>(() => ExamRepositoryImpl(sl()))
+    ..registerLazySingleton<ExamRemoteDataSource>(() => ExamRemoteDataSourceImpl(sl(), sl()));
 }
