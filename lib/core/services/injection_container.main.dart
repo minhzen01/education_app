@@ -9,6 +9,7 @@ Future<void> initial() async {
   await _initVideo();
   await _initMaterial();
   await _initExam();
+  await _initNotifications();
 }
 
 Future<void> _initOnBoarding() async {
@@ -76,4 +77,16 @@ Future<void> _initExam() async {
     ..registerLazySingleton(() => GetUserExamsUseCase(sl()))
     ..registerLazySingleton<ExamRepository>(() => ExamRepositoryImpl(sl()))
     ..registerLazySingleton<ExamRemoteDataSource>(() => ExamRemoteDataSourceImpl(sl(), sl()));
+}
+
+Future<void> _initNotifications() async {
+  sl
+    ..registerFactory(() => NotificationCubit(sl(), sl(), sl(), sl(), sl()))
+    ..registerLazySingleton(() => ClearUseCase(sl()))
+    ..registerLazySingleton(() => ClearAllUseCase(sl()))
+    ..registerLazySingleton(() => GetNotificationsUseCase(sl()))
+    ..registerLazySingleton(() => MarkAsReadUseCase(sl()))
+    ..registerLazySingleton(() => SendNotificationUseCase(sl()))
+    ..registerLazySingleton<NotificationRepository>(() => NotificationRepositoryImpl(sl()))
+    ..registerLazySingleton<NotificationRemoteDataSource>(() => NotificationRemoteDataSourceImpl(sl(), sl()));
 }
