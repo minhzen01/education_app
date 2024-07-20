@@ -25,20 +25,17 @@ class NotificationEntity extends Equatable {
     required this.title,
     required this.body,
     required this.category,
-    required this.seen,
     required this.sentAt,
+    this.seen = false,
   });
 
-  factory NotificationEntity.empty() {
-    return NotificationEntity(
-      id: '_empty.id',
-      title: '_empty.title',
-      body: '_empty.body',
-      category: NotificationCategory.NONE,
-      seen: false,
-      sentAt: DateTime.now(),
-    );
-  }
+  NotificationEntity.empty()
+      : id = '_empty.id',
+        title = '_empty.title',
+        body = '_empty.body',
+        category = NotificationCategory.NONE,
+        seen = false,
+        sentAt = DateTime.now();
 
   final String id;
   final String title;
@@ -49,5 +46,4 @@ class NotificationEntity extends Equatable {
 
   @override
   List<Object?> get props => [id];
-
 }

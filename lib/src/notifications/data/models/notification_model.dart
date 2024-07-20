@@ -9,31 +9,29 @@ class NotificationModel extends NotificationEntity {
     required super.title,
     required super.body,
     required super.category,
-    required super.seen,
     required super.sentAt,
+    super.seen,
   });
 
-  factory NotificationModel.fromMap(DataMap map) {
-    return NotificationModel(
-      id: map['id'] as String,
-      title: map['title:'] as String,
-      body: map['body'] as String,
-      category: (map['category'] as String).toNotificationCategory,
-      seen: map['seen'] as bool,
-      sentAt: (map['sentAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
-    );
-  }
+  NotificationModel.fromMap(DataMap map)
+      : super(
+          id: map['id'] as String,
+          title: map['title'] as String,
+          body: map['body'] as String,
+          category: (map['category'] as String).toNotificationCategory,
+          seen: map['seen'] as bool,
+          sentAt: (map['sentAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
+        );
 
-  factory NotificationModel.empty() {
-    return NotificationModel(
-      id: '_empty.id',
-      title: '_empty.title',
-      body: '_empty.body',
-      category: NotificationCategory.NONE,
-      seen: false,
-      sentAt: DateTime.now(),
-    );
-  }
+  NotificationModel.empty()
+      : this(
+          id: '_empty.id',
+          title: '_empty.title',
+          body: '_empty.body',
+          category: NotificationCategory.NONE,
+          seen: false,
+          sentAt: DateTime.now(),
+        );
 
   NotificationModel copyWith({
     String? id,
@@ -53,14 +51,12 @@ class NotificationModel extends NotificationEntity {
     );
   }
 
-  DataMap toMap() {
-    return {
-      'id': id,
-      'title': title,
-      'body': body,
-      'category': category.value,
-      'seen': seen,
-      'sentAt': FieldValue.serverTimestamp(),
-    };
-  }
+  DataMap toMap() => {
+        'id': id,
+        'title': title,
+        'body': body,
+        'category': category.value,
+        'seen': seen,
+        'sentAt': FieldValue.serverTimestamp(),
+      };
 }
