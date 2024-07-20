@@ -24,6 +24,10 @@ class NotificationErrorState extends NotificationState {
   List<Object?> get props => [message];
 }
 
+class NotificationClearedState extends NotificationState {
+  const NotificationClearedState();
+}
+
 class SendingNotificationState extends NotificationState {
   const SendingNotificationState();
 }

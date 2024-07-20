@@ -2,6 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:education_app/core/common/views/loading_view.dart';
 import 'package:education_app/core/common/widgets/nested_back_button.dart';
 import 'package:education_app/core/extensions/context_extension.dart';
+import 'package:education_app/core/services/injection_container.dart';
 import 'package:education_app/core/utils/core_utils.dart';
 import 'package:education_app/src/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:education_app/src/notifications/presentation/widgets/no_notifications.dart';
@@ -44,7 +45,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           }
         },
         builder: (context, state) {
-          if (state is GettingNotificationsState || state is ClearingNotificationsState) {
+          if (state is GettingNotificationsState) {
             return const LoadingView();
           } else if (state is NotificationsLoaded && state.notifications.isEmpty) {
             return const NoNotifications();
@@ -55,7 +56,10 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 return Badge(
                   showBadge: !notification.seen,
                   position: BadgePosition.topEnd(top: 30, end: 20),
-                  child: NotificationTile(entity: notification),
+                  child: BlocProvider(
+                    create: (context) => sl<NotificationCubit>(),
+                    child: NotificationTile(entity: notification),
+                  ),
                   // child: NotificationTile(notification),
                 );
               },
