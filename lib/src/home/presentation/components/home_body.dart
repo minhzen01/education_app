@@ -52,6 +52,7 @@ class _HomeBodyState extends State<HomeBody> {
               const HomeHeader(),
               const SizedBox(height: 20),
               HomeSubjects(courses: courses),
+              const SizedBox(height: 20),
               const HomeVideos(),
             ],
           );

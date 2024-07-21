@@ -3,7 +3,6 @@ import 'package:education_app/core/common/widgets/title_input_field.dart';
 import 'package:education_app/core/utils/core_utils.dart';
 import 'package:education_app/src/authentication/data/datasources/auth_constants.dart';
 import 'package:education_app/src/course/data/models/course_model.dart';
-import 'package:education_app/src/course/features/videos/presentation/utils/video_utils.dart';
 import 'package:education_app/src/course/presentation/cubit/course_cubit.dart';
 import 'package:education_app/src/notifications/domain/entities/notification_entity.dart';
 import 'package:education_app/src/notifications/presentation/widgets/notification_wrapper.dart';
@@ -72,7 +71,7 @@ class _AddCourseSheetState extends State<AddCourseSheet> {
             }
             CoreUtils.showSnackBar(context, 'Course added successfully');
             loading = true;
-            VideoUtils.sendNotification(
+            CoreUtils.sendNotification(
               context: context,
               title: 'New Course(${titleController.text.trim()})',
               body: 'A new course has been added',

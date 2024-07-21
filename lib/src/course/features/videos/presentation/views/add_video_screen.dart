@@ -126,7 +126,7 @@ class _AddVideoScreenState extends State<AddVideoScreen> {
             CoreUtils.showSnackBar(context, state.message);
           } else if (state is VideoAddedState) {
             CoreUtils.showSnackBar(context, 'Video added successfully');
-            VideoUtils.sendNotification(
+            CoreUtils.sendNotification(
               context: context,
               title: 'New ${courseNotifier.value!.title} video',
               body: 'A new video has been added for ${courseNotifier.value!.title}',
