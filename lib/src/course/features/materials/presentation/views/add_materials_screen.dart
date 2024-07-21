@@ -10,7 +10,7 @@ import 'package:education_app/src/course/features/materials/domain/entities/pick
 import 'package:education_app/src/course/features/materials/domain/entities/resource_entity.dart';
 import 'package:education_app/src/course/features/materials/presentation/cubit/material_cubit.dart';
 import 'package:education_app/src/course/features/materials/presentation/widgets/edit_resource_dialog.dart';
-import 'package:education_app/src/course/features/materials/presentation/widgets/resource_tile.dart';
+import 'package:education_app/src/course/features/materials/presentation/widgets/picked_resource_tile.dart';
 import 'package:education_app/src/notifications/domain/entities/notification_entity.dart';
 import 'package:education_app/src/notifications/presentation/widgets/notification_wrapper.dart';
 import 'package:file_picker/file_picker.dart';
@@ -198,7 +198,7 @@ class _AddMaterialsScreenState extends State<AddMaterialsScreen> {
                           padding: EdgeInsets.zero,
                           itemBuilder: (context, index) {
                             final resource = resources[index];
-                            return ResourceTile(
+                            return PickedResourceTile(
                               resource: resource,
                               onEdit: () => editResource(index),
                               onDelete: () => setState(() => resources.removeAt(index)),

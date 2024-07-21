@@ -62,7 +62,8 @@ Future<void> _initMaterial() async {
     ..registerLazySingleton(() => AddMaterialUseCase(sl()))
     ..registerLazySingleton(() => GetMaterialsUseCase(sl()))
     ..registerLazySingleton<MaterialRepository>(() => MaterialRepositoryImpl(sl()))
-    ..registerLazySingleton<MaterialRemoteDataSource>(() => MaterialRemoteDataSourceImpl(sl(), sl(), sl()));
+    ..registerLazySingleton<MaterialRemoteDataSource>(() => MaterialRemoteDataSourceImpl(sl(), sl(), sl()))
+    ..registerFactory(() => ResourceController(sl(), sl()));
 }
 
 Future<void> _initExam() async {

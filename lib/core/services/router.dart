@@ -11,6 +11,7 @@ import 'package:education_app/src/course/features/exams/presentation/cubit/exam_
 import 'package:education_app/src/course/features/exams/presentation/views/add_exam_screen.dart';
 import 'package:education_app/src/course/features/materials/presentation/cubit/material_cubit.dart';
 import 'package:education_app/src/course/features/materials/presentation/views/add_materials_screen.dart';
+import 'package:education_app/src/course/features/materials/presentation/views/course_materials_screen.dart';
 import 'package:education_app/src/course/features/videos/presentation/cubit/video_cubit.dart';
 import 'package:education_app/src/course/features/videos/presentation/views/add_video_screen.dart';
 import 'package:education_app/src/course/features/videos/presentation/views/course_videos_screen.dart';

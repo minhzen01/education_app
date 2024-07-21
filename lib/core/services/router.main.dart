@@ -98,6 +98,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           providers: [
             BlocProvider(create: (_) => sl<CourseCubit>()),
             BlocProvider(create: (_) => sl<ExamCubit>()),
+            BlocProvider(create: (_) => sl<NotificationCubit>()),
           ],
           child: const AddExamScreen(),
         ),
@@ -117,7 +118,14 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         (_) => VideoPlayerScreen(videoURL: settings.arguments! as String),
         settings: settings,
       );
-
+    case CourseMaterialsScreen.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (_) => sl<MaterialCubit>(),
+          child: CourseMaterialsScreen(course: settings.arguments! as Course),
+        ),
+        settings: settings,
+      );
     default:
       return _pageBuilder(
         (_) => const PageUnderConstruction(),

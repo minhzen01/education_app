@@ -33,6 +33,7 @@ import 'package:education_app/src/course/features/materials/domain/repositories/
 import 'package:education_app/src/course/features/materials/domain/usecases/add_material_use_case.dart';
 import 'package:education_app/src/course/features/materials/domain/usecases/get_materials_use_case.dart';
 import 'package:education_app/src/course/features/materials/presentation/cubit/material_cubit.dart';
+import 'package:education_app/src/course/features/materials/presentation/providers/resource_controller.dart';
 import 'package:education_app/src/course/features/videos/data/datasources/video_remote_data_source.dart';
 import 'package:education_app/src/course/features/videos/data/datasources/video_remote_data_source_impl.dart';
 import 'package:education_app/src/course/features/videos/data/repositories/video_repository_impl.dart';

@@ -1,59 +1,96 @@
-import 'package:education_app/core/res/media_res.dart';
-import 'package:education_app/src/course/features/materials/domain/entities/picked_resource.dart';
-import 'package:education_app/src/course/features/materials/presentation/widgets/picked_resource_horizontal_text.dart';
+import 'package:education_app/core/res/app_colors.dart';
+import 'package:education_app/src/course/features/materials/presentation/providers/resource_controller.dart';
+import 'package:file_icon/file_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ResourceTile extends StatelessWidget {
-  const ResourceTile({
-    required this.resource,
-    required this.onEdit,
-    required this.onDelete,
-    super.key,
-  });
-
-  final PickedResource resource;
-  final VoidCallback onEdit;
-  final VoidCallback onDelete;
+  const ResourceTile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ListTile(
-            leading: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Image.asset(MediaRes.material),
+    return Consumer<ResourceController>(
+      builder: (_, controller, __) {
+        final resource = controller.resource!;
+        final authorIsNull = resource.author == null || resource.author!.isEmpty;
+        final descriptionIsNull = resource.description == null || resource.description!.isEmpty;
+        final downloadButton = controller.downloading
+            ? CircularProgressIndicator(value: controller.percentage, color: AppColors.primaryColour)
+            : IconButton(
+                onPressed: controller.fileExists ? controller.openFile : controller.downloadAndSaveFile,
+                icon: Icon(controller.fileExists ? Icons.download_done_rounded : Icons.download_rounded),
+              );
+        return ExpansionTile(
+          tilePadding: EdgeInsets.zero,
+          childrenPadding: const EdgeInsets.symmetric(horizontal: 10),
+          expandedAlignment: Alignment.centerLeft,
+          leading: FileIcon('.${resource.fileExtension}', size: 40),
+          title: Text(
+            resource.title!,
+            style: const TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w600,
             ),
-            title: Text(
-              resource.path.split('/').last,
-              maxLines: 1,
-            ),
-            contentPadding: const EdgeInsets.only(left: 16, right: 5),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
+          ),
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.edit),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.close),
-                ),
+                if (authorIsNull && descriptionIsNull) downloadButton,
+                if (!authorIsNull)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              'Author',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(resource.author!),
+                          ],
+                        ),
+                      ),
+                      downloadButton,
+                    ],
+                  ),
+                if (!descriptionIsNull)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (authorIsNull) const SizedBox(height: 10),
+                            const Text(
+                              'Description',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(resource.description!),
+                          ],
+                        ),
+                      ),
+                      if (authorIsNull) downloadButton,
+                    ],
+                  ),
               ],
             ),
-          ),
-          const Divider(height: 1),
-          PickedResourceHorizontalText(label: 'Author', value: resource.author),
-          PickedResourceHorizontalText(label: 'Title', value: resource.title),
-          PickedResourceHorizontalText(
-            label: 'Description',
-            value: resource.description.trim().isEmpty ? 'None' : resource.description,
-          ),
-        ],
-      ),
+          ],
+        );
+      },
     );
   }
 }
