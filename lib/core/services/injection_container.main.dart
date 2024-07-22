@@ -10,6 +10,7 @@ Future<void> initial() async {
   await _initMaterial();
   await _initExam();
   await _initNotifications();
+  await _initChat();
 }
 
 Future<void> _initOnBoarding() async {
@@ -90,4 +91,28 @@ Future<void> _initNotifications() async {
     ..registerLazySingleton(() => SendNotificationUseCase(sl()))
     ..registerLazySingleton<NotificationRepository>(() => NotificationRepositoryImpl(sl()))
     ..registerLazySingleton<NotificationRemoteDataSource>(() => NotificationRemoteDataSourceImpl(sl(), sl()));
+}
+
+Future<void> _initChat() async {
+  sl
+    ..registerFactory(
+      () => ChatCubit(
+        getGroups: sl(),
+        getMessages: sl(),
+        getUserById: sl(),
+        joinGroup: sl(),
+        leaveGroup: sl(),
+        sendMessage: sl(),
+      ),
+    )
+    ..registerLazySingleton(() => GetGroupsUseCase(sl()))
+    ..registerLazySingleton(() => GetMessagesUseCase(sl()))
+    ..registerLazySingleton(() => GetUserByIdUseCase(sl()))
+    ..registerLazySingleton(() => JoinGroupUseCase(sl()))
+    ..registerLazySingleton(() => LeaveGroupUseCase(sl()))
+    ..registerLazySingleton(() => SendMessageUseCase(sl()))
+    ..registerLazySingleton<ChatRepository>(() => ChatRepoImpl(sl()))
+    ..registerLazySingleton<ChatRemoteDataSource>(
+      () => ChatRemoteDataSourceImpl(firestore: sl(), auth: sl()),
+    );
 }
