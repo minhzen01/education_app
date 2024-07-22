@@ -7,8 +7,11 @@ import 'package:education_app/src/authentication/presentation/bloc/auth_bloc.dar
 import 'package:education_app/src/authentication/presentation/views/sign_in_screen.dart';
 import 'package:education_app/src/authentication/presentation/views/sign_up_screen.dart';
 import 'package:education_app/src/course/domain/entities/course.dart';
+import 'package:education_app/src/course/features/exams/domain/entities/exam_entity.dart';
 import 'package:education_app/src/course/features/exams/presentation/cubit/exam_cubit.dart';
 import 'package:education_app/src/course/features/exams/presentation/views/add_exam_screen.dart';
+import 'package:education_app/src/course/features/exams/presentation/views/course_exams_screen.dart';
+import 'package:education_app/src/course/features/exams/presentation/views/exam_details_screen.dart';
 import 'package:education_app/src/course/features/materials/presentation/cubit/material_cubit.dart';
 import 'package:education_app/src/course/features/materials/presentation/views/add_materials_screen.dart';
 import 'package:education_app/src/course/features/materials/presentation/views/course_materials_screen.dart';
