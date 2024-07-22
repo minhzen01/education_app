@@ -76,6 +76,19 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         ),
         settings: settings,
       );
+
+    case ExamScreen.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (context) => sl<ExamCubit>(),
+          child: ChangeNotifierProvider(
+            create: (context) => ExamController(exam: settings.arguments! as ExamEntity),
+            child: const ExamScreen(),
+          ),
+        ),
+        settings: settings,
+      );
+
     case AddVideoScreen.routeName:
       return _pageBuilder(
         (_) => MultiBlocProvider(

@@ -9,9 +9,11 @@ import 'package:education_app/src/authentication/presentation/views/sign_up_scre
 import 'package:education_app/src/course/domain/entities/course.dart';
 import 'package:education_app/src/course/features/exams/domain/entities/exam_entity.dart';
 import 'package:education_app/src/course/features/exams/presentation/cubit/exam_cubit.dart';
+import 'package:education_app/src/course/features/exams/presentation/providers/exam_controller.dart';
 import 'package:education_app/src/course/features/exams/presentation/views/add_exam_screen.dart';
 import 'package:education_app/src/course/features/exams/presentation/views/course_exams_screen.dart';
 import 'package:education_app/src/course/features/exams/presentation/views/exam_details_screen.dart';
+import 'package:education_app/src/course/features/exams/presentation/views/exam_screen.dart';
 import 'package:education_app/src/course/features/materials/presentation/cubit/material_cubit.dart';
 import 'package:education_app/src/course/features/materials/presentation/views/add_materials_screen.dart';
 import 'package:education_app/src/course/features/materials/presentation/views/course_materials_screen.dart';
@@ -31,6 +33,7 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart' as fui;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'router.main.dart';

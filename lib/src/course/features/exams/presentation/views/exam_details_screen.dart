@@ -9,6 +9,7 @@ import 'package:education_app/core/utils/core_utils.dart';
 import 'package:education_app/src/course/features/exams/data/models/exam_model.dart';
 import 'package:education_app/src/course/features/exams/domain/entities/exam_entity.dart';
 import 'package:education_app/src/course/features/exams/presentation/cubit/exam_cubit.dart';
+import 'package:education_app/src/course/features/exams/presentation/views/exam_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -131,10 +132,10 @@ class _ExamDetailsScreenState extends State<ExamDetailsScreen> {
                       RoundedButton(
                         label: 'Start Exam',
                         onPressed: () {
-                          // Navigator.of(context).pushNamed(
-                          //   ExamScreen.routeName,
-                          //   arguments: completeExam,
-                          // );
+                          Navigator.of(context).pushNamed(
+                            ExamScreen.routeName,
+                            arguments: completeExam,
+                          );
                         },
                       )
                     else
