@@ -8,6 +8,7 @@ import 'package:education_app/src/authentication/presentation/views/sign_in_scre
 import 'package:education_app/src/authentication/presentation/views/sign_up_screen.dart';
 import 'package:education_app/src/course/domain/entities/course.dart';
 import 'package:education_app/src/course/features/exams/domain/entities/exam_entity.dart';
+import 'package:education_app/src/course/features/exams/domain/entities/user_exam_entity.dart';
 import 'package:education_app/src/course/features/exams/presentation/cubit/exam_cubit.dart';
 import 'package:education_app/src/course/features/exams/presentation/providers/exam_controller.dart';
 import 'package:education_app/src/course/features/exams/presentation/views/add_exam_screen.dart';
@@ -28,6 +29,7 @@ import 'package:education_app/src/notifications/presentation/cubit/notification_
 import 'package:education_app/src/on_boarding/data/datasources/on_boarding_constants.dart';
 import 'package:education_app/src/on_boarding/presentation/cubit/on_boarding_cubit.dart';
 import 'package:education_app/src/on_boarding/presentation/views/on_boarding_screen.dart';
+import 'package:education_app/src/quick_access/presentation/views/exam_history_details_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart' as fui;
 import 'package:flutter/cupertino.dart';
